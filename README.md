@@ -849,9 +849,13 @@ $ tree .
  - Tasks change state based on their children - if child fails, parent fails
 
 
+--------
 
 
-
+## Help and Understanding
+ - https://github.com/libgdx/gdx-ai/wiki/Behavior-Trees
+     - This is a GREAT resource!
+     - 
 
 
 
@@ -1068,7 +1072,46 @@ root:
         attack!
         retreat!
 ```
-
+ - Implicit Implications...
+     - What if ALL nodes were selectors and sequencers, just with only one child?
+     - Hence, any node could quickly and easily transform in role, even dynamically.
+     - Yet...
+         - Optimization? - Have check for no children? No Check for Parents?
+     - Do we even need a `tree` class? Or do we just need a handler for it?
+ - How to handle complexity?
+     - EG, loooong or heavily in d  e   n    t      e       d ?
+```yaml
+root:
+    attack
+    patrol
+    move
+attack:
+    isTargetClose?
+        canSeePlayer?
+            attack!
+patrol:
+    isTargetClose?
+        patrol!
+move:
+    move!
+```
+```yaml
+in_order:
+    move
+    shoot
+random_order:
+    move
+    shoot
+pick:
+    move
+    shoot
+pick_random:
+    move
+    shoot
+parallel:
+    move
+    shoot
+```
 
 
 
