@@ -769,7 +769,10 @@ $ tree .
      2. `bin/MarioAI/ch/idsia/scenarios/Main.class`
      3. `src/ch/idsia/scenarios/Main.java`
  - There is no `CustomRun` file.
- - There are 2 `Play` files.
+ - There are 3 `Play` files.
+     1. `bin/AmiCoBuild/ch/idsia/scenarios/Play.class`
+     2. `bin/MarioAI/ch/idsia/scenarios/Play.class`
+     3. `src/ch/idsia/scenarios/Play.java`
 
 
 ## Structural Additions
@@ -777,54 +780,315 @@ $ tree .
 .
 └── src
     └── peter
-        ├── Nodes
-        |   ├── Node.java
-        |   ├── Composite.java
-        |   ├── Sequence.java
-        |   ├── Selector.java
-        |   ├── RandomSelector.java
-        |   ├── RandomSequence.java
-        |   ├── Action.java
-        |   └── Condition.java
+        ├── AbstractTasks
+        │   ├── Task.java               // Abstract -- Has Parent, Children, Effect, Status
+        │   ├── Composite.java          // Abstract -- Has 
+        │   ├── Sequence.java           // Abstract -- Do These Things in Order
+        │   ├── Selector.java           // Abstract -- Pick One of These
+        │   ├── RandomSelector.java     // Randomly Select
+        │   ├── RandomSequence.java     // Randomly Order
+        │   ├── Action.java             // Do a thing to the external environment
+        │   └── Condition.java          // Get a thing from the external environment
+        ├── MarioTasks
+        │   ├── MoveFlat.java           // Move to a Point on Ground
+        │   ├── MoveDown.java           // Move to a Point Below
+        │   ├── MoveUp.java             // Move to a Point Above
+        │   ├── EnemyInRange.java       // Can we step/jump on an enemy?
+        │   ├── Survive.java            // Choose which sub behavior to pursue
+        │   ├── Win.java                // Move right
+        │   ├── Score.java              // Get Coins
+        │   ├── Loop.java               // Calls itself and its children
+        │   └── AttackJump.java         // Jump on Enemy
         ├── Trees
-        |   ├── Tree.java
-        |   ├── Kill.java
-        |   ├── Jump.java
-        |   ├── Score.java
-        |   └── Combo.java
-        └── Agents
-            ├── BTAgent.java
-            └── MarioBTAgent.java
-```
-
-
-## Structural Additions Annotated
-```bash
-.
-└── src
-    └── peter
-        ├── Tasks
-        |   ├── Task.java               // Abstract -- Has Parent, Children, Effect, Status
-        |   ├── Composite.java          // Abstract -- Has 
-        |   ├── Sequence.java           // Do These Things in Order
-        |   ├── Selector.java           // Pick One of These
-        |   ├── RandomSelector.java     // Randomly Select
-        |   ├── RandomSequence.java     // Randomly Order
-        |   ├── Action.java             // Do a thing to the external environment
-        |   └── Question.java           // Get a thing from the external environment
-        ├── Trees
-        |   ├── Tree.java               // Abstract - Has Root, Meta
-        |   ├── Kill.java               // Emphasizes killing as many enemies as possible
-        |   ├── Jump.java               // Emphasizes doing every jump correctly
-        |   ├── Coins.java              // Emphasizes collecting as many coins as possible
-        |   └── Combo.java              // Combines all of the Trees into a Mega Tree 
+        │   ├── Tree.java               // Abstract - Has Root, Meta
+        │   ├── Killing.java            // Emphasizes killing as many enemies as possible
+        │   ├── Agility.java            // Emphasizes doing every jump correctly
+        │   ├── Coins.java              // Emphasizes collecting as many coins as possible
+        │   └── Combo.java              // Combines all of the Trees into a Mega Tree 
         ├── Agents
-        |   ├── BTAgent.java            // Interface -- Has Tree, Update, Query
-        |   └── MarioBTAgent.java       // Uses Regular Mario Agent and BT Functionality
+        │   ├── BTAgent.java            // Interface -- Has Tree, Update, Query
+        │   └── MarioBTAgent.java       // Abstract -- Uses Regular Mario Agent and BT Functionality
         └── Tests
-            ├── TestTask.java
-            ├── TestTree.java           // Emphasizes getting the tree to work
+            ├── TestTask.java           // 
+            ├── TestTree.java           // 
+            └── TestAgent.java          // 
 ```
+
+
+---------
+
+
+## Task Messaging System
+ - Basic
+     - Running
+     - Not Running
+ - Advanced
+     - Running
+     - Succeeded
+     - Failed
+
+
+## Tree System Interaction
+ - Game:
+     - World
+         - Player
+         - Enemies
+         - Items
+         - Geometry
+     - Tree
+         - Tasks
+     - Agent
+         - BT Interface
+ - Tree is 'run once' by interface
+ - Tree changes state of Agent
+ - Task is 'run once' by tree (recursive)
+ - Task returns status of computation (needs more, needs less)
+ - Task computation is bound to change in game state
+ - Tasks are resumed by the agent every Game Cycle _(see Update() method)_
+ - Tasks check if their prior state was `running` and run themselves again if so
+ - Tasks change state based on their children - if child fails, parent fails
+
+
+
+
+
+
+
+
+
+
+
+---------
+
+
+## Tree Representation
+
+### Raw Data YAML:
+ - Notation:
+     - `composite:`
+     - `condition?`
+     - `action!`
+```yml
+# FILE : Patrol Tree
+
+# Standard Utils
+(JV) import "BT.java" as "root"
+(JV) import "SelectorComposite.java" as "selector"
+(JV) import "SequenceComposite.java" as "sequence"
+
+# Condition Utils
+(JV) import "CanSeePlayerCondition.java" as "canSeePlayer?"
+(JV) import "IsTargetCloseCondition.java" as "isTargetClose?"
+
+# Action Utils
+(JV) import "AttackAction.java" as "attack!"
+(JV) import "PatrolAction.java" as "patrol!"
+(JV) import "MoveAction.java" as "move!"
+
+# Definition
+root:
+    selector:
+        sequence:
+            isTargetClose?
+            selector:
+                sequence:
+                    canSeePlayer?
+                    attack!
+                patrol!
+        move!
+```
+
+### Layers of Logic:
+ - **(1)** choose `move!` or `sequence:`
+ - **(2)** wait until `isTargetClose?` then `select:`
+ - **(3)** choose `sequence:` or `patrol!`
+ - **(4)** wait until `canSeePlayer?` then `attack!`
+
+### Names By Family:
+ - root.selector:
+ - root.selector.sequence:
+ - root.selector.sequence.isTargetClose?
+ - root.selector.sequence.selector:
+ - root.selector.sequence.selector.sequence:
+ - root.selector.sequence.selector.sequence.canSeePlay?
+ - root.selector.sequence.selector.sequence.attack!
+ - root.selector.sequence.selector.patrol!
+ - root.selector.move!
+
+### Lisp?
+```lisp
+(root (selector ((sequence isTargetClose?
+                           (selector (sequence   canSeePlayer?
+                                                 attack!)))
+                                     patrol!
+                move!)))
+```
+
+### Python
+```python
+def PatrolTree():
+    while(True):
+        selector(
+            sequence(
+                isTargetClose(),
+                selector(
+                    sequence(
+                        canSeePlayer(),
+                        attack()),
+                    patrol())),
+            move())
+```
+```python
+def PatrolTree():
+    while(True): selector(sequence(isTargetClose(), selector(sequence(canSeePlayer(), attack()), patrol())), move())
+```
+
+### Switches
+```python
+def PatrolTree(self, world):
+    while(True):                        # root
+        switch(isTargetClose()):        # selector on isTargetClose?
+            case True:                  # sequence
+                switch(canSeePlayer()): # selector on canSeePlayer?
+                    case True:          # sequence
+                        attack()        # attack!
+                    default:
+                        patrol()        # patrol!
+            case False:
+                move()                  # move!
+```
+
+### If Statements
+```python
+def PatrolTree(self, world):
+    while(True):                        # root
+        if(isTargetClose()):            # selector on isTargetClose?
+            if(canSeePlayer()):
+                attack()
+            else:
+                patrol()
+        else:
+            move()
+```
+
+### Scheme
+```scheme
+(define (PatrolTree self world)
+    (if isTargetClose
+        (if canSeePlayer
+            attack
+            patrol)
+        move))
+```
+
+### Haskell
+```haskell
+PatrolTree :: World -> Action
+PatrolTree _                    = PatrolTree IsTargetClose?
+PatrolTree IsTargetClose        = PatrolTree CanSeePlayer?
+PatrolTree CanSeePlayer         = Attack
+PatrolTree (not canSeePlayer)   = Patrol
+PatrolTree (not isTargetClose)  = Move
+```
+
+### Conditional Sorting
+```yaml
+root:
+    targetIsClose
+    default
+
+default:
+    move!
+
+targetIsClose:
+    canSeePlayer
+    cannotSeePlayer
+
+canSeePlayer:
+    attack!
+
+cannotSeePlayer:
+    patrol!
+
+```
+
+### Long Conditional Sorting
+```yaml
+root:
+    targetIsClose and canSeePlayer -> attack!
+    targetIsClose and cannotSeePlayer -> patrol!
+    targetIsNotClose and cannotSeePlayer -> move!
+```
+
+### Short Conditional Sorting
+```yaml
+root:
+    targetIsClose and canSeePlayer -> attack!
+    targetIsClose -> patrol!
+    _ -> move!
+```
+
+### Parental Conditional Sorting
+```bash
+root:
+├── isTargetClose?
+│   ├── canSeePlayer?
+│   │   └── attack!
+│   └── patrol!
+└── move!
+```
+ - How to represent ordering?
+     - Short Circuiting?
+     - Most Specific Case First?
+         - How to build this model of evaluation?
+ - How to represent parallel actions?
+     - Eg, we want the agent to _always_ move?
+```yaml
+root:
+ - isTargetClose?
+     - canSeePlayer?
+         - attack!
+     - patrol!
+     - move!
+```
+```yaml
+root:
+    isTargetClose?
+        canSeePlayer?
+            attack!
+        patrol!
+    move!
+```
+ - Are these just implicit selectors and sequencers?
+ - How to indicate a random selection?
+ - How to indicate an open selection? (eg, accepts a generic method of selecting -- returns a list)
+```
+root:
+    random?
+        attack!
+        retreat!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
