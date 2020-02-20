@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ]
+    // Cygwin
+    "terminal.integrated.shell.windows": "C:\\cygwin64\\Cygwin.bat"
+}
