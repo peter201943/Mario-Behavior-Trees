@@ -23,6 +23,7 @@
      - [About](#about)
      - [Links](#links)
      - [Structural Additions](#structural-additions)
+     - [Progress](#progress)
 
 
 ## Links
@@ -71,6 +72,19 @@
             ├── TestTree.java           // 
             └── TestAgent.java          // 
 ```
+
+
+---------
+
+
+## Progress
+
+
+### ???
+ - Got all these damn notes done
+ - Did a crud-ton of reading
+ - Now to get the damn thing to run
+
 
 
 ---------

@@ -25,6 +25,11 @@
      - [Links](#links)
      - [Project Structure](#project-structure)
      - [Structure Analysis](#structure-analysis)
+     - [Messaging](#messaging)
+     - [LibGDX Tree Representation](#libgdx-tree-representation)
+     - [Language Representations](#language-representations)
+     - [Explicit Sorting Representation](#explicit-sorting-representation)
+     - [Help and Understanding](#help-and-understanding)
 
 
 ## Links
@@ -785,7 +790,10 @@ $ tree .
 ---------
 
 
-## Task Messaging System
+## Messaging
+
+
+### Task Messaging System
  - Basic
      - Running
      - Not Running
@@ -795,7 +803,7 @@ $ tree .
      - Failed
 
 
-## Tree System Interaction
+### Tree System Interaction
  - Game:
      - World
          - Player
@@ -819,7 +827,8 @@ $ tree .
 --------
 
 
-## Tree Representations
+## LibGDX Tree Representation
+
 
 ### Raw Data YAML:
  - Notation:
@@ -856,11 +865,13 @@ root:
         move!
 ```
 
+
 ### Layers of Logic:
  - **(1)** choose `move!` or `sequence:`
  - **(2)** wait until `isTargetClose?` then `select:`
  - **(3)** choose `sequence:` or `patrol!`
  - **(4)** wait until `canSeePlayer?` then `attack!`
+
 
 ### Names By Family:
  - root.selector:
@@ -889,6 +900,7 @@ root:
                 move!)))
 ```
 
+
 ### Python
 ```python
 def PatrolTree():
@@ -903,10 +915,13 @@ def PatrolTree():
                     patrol())),
             move())
 ```
+
+
 ```python
 def PatrolTree():
     while(True): selector(sequence(isTargetClose(), selector(sequence(canSeePlayer(), attack()), patrol())), move())
 ```
+
 
 ### Switches
 ```python
@@ -923,6 +938,7 @@ def PatrolTree(self, world):
                 move()                  # move!
 ```
 
+
 ### If Statements
 ```python
 def PatrolTree(self, world):
@@ -936,6 +952,7 @@ def PatrolTree(self, world):
             move()
 ```
 
+
 ### Scheme
 ```scheme
 (define (PatrolTree self world)
@@ -945,6 +962,7 @@ def PatrolTree(self, world):
             patrol)
         move))
 ```
+
 
 ### Haskell
 ```haskell
@@ -981,8 +999,8 @@ canSeePlayer:
 
 cannotSeePlayer:
     patrol!
-
 ```
+
 
 ### Long Conditional Sorting
 ```yaml
@@ -992,6 +1010,7 @@ root:
     targetIsNotClose and cannotSeePlayer -> move!
 ```
 
+
 ### Short Conditional Sorting
 ```yaml
 root:
@@ -999,6 +1018,7 @@ root:
     targetIsClose -> patrol!
     _ -> move!
 ```
+
 
 ### Parental Conditional Sorting
 ```bash
@@ -1009,12 +1029,16 @@ root:
 │   └── patrol!
 └── move!
 ```
+
+
  - How to represent ordering?
      - Short Circuiting?
      - Most Specific Case First?
          - How to build this model of evaluation?
  - How to represent parallel actions?
      - Eg, we want the agent to _always_ move?
+
+
 ```yaml
 root:
  - isTargetClose?
@@ -1023,6 +1047,8 @@ root:
      - patrol!
      - move!
 ```
+
+
 ```yaml
 root:
     isTargetClose?
@@ -1032,9 +1058,11 @@ root:
     move!
 ```
 
+
  - Are these just implicit selectors and sequencers?
  - How to indicate a random selection?
  - How to indicate an open selection? (eg, accepts a generic method of selecting -- returns a list)
+
 
 ```
 root:
@@ -1042,6 +1070,7 @@ root:
         attack!
         retreat!
 ```
+
 
  - Implicit Implications...
      - What if ALL nodes were selectors and sequencers, just with only one child?
@@ -1051,6 +1080,7 @@ root:
      - Do we even need a `tree` class? Or do we just need a handler for it?
  - How to handle complexity?
      - EG, loooong or heavily in d  e   n    t      e       d ?
+
 
 ```yaml
 root:
@@ -1067,6 +1097,8 @@ patrol:
 move:
     move!
 ```
+
+
 ```yaml
 in_order:
     move
@@ -1090,11 +1122,30 @@ parallel:
 
 
 ## Help and Understanding
+
+
+### Readings
  - https://github.com/libgdx/gdx-ai/wiki/Behavior-Trees
      - This is a GREAT resource!
  - https://www.gameaipro.com/GameAIPro/GameAIPro_Chapter06_The_Behavior_Tree_Starter_Kit.pdf
  - http://www.what-could-possibly-go-wrong.com/fluent-behavior-trees-for-ai-and-game-logic/
  - https://www.youtube.com/watch?v=bT7WRAeQo3c
+
+
+### Class Notes
+ - Press "G" for Gridview
+ - `Ego` - refers to Center of Mario (Screen Position)
+ - Blocks might appear invisible running under Java 8
+ - I configured the build path in the project to use JRE System Library [jdk1.8.0_241]
+ - and also had to set the compliance level of the compiler to 1.8
+ - main -> declare your agent
+ - marioAIOptions -> set agent
+
+
+### Getting the Game to Work
+ - Use Java 1.8
+ - Try ForwardAgent.java
+ - Delete ANY `testing` references
 
 
 ---------
