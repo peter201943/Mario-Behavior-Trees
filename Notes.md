@@ -33,8 +33,9 @@
 
 
 ## Links
- - [README](README.md) -- Pertains to anything I _directly_ did
- - [Notes](Notes.md) -- Pertains to my understanding and development of the project
+ - [README](README.md)      -- Pertains to anything I _directly_ did
+ - [Notes](Notes.md)        -- Pertains to my understanding and development of the project
+ - [Behavior](behavior.py)  -- Prototype of Project in Python
 
 
 ---------

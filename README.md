@@ -22,14 +22,15 @@
  - **Contents**
      - [About](#about)
      - [Links](#links)
-     - [Structural Additions](#structural-additions)
+     - [Additions](#additions)
      - [Progress](#progress)
      - [Design](#design)
 
 
 ## Links
- - [README](README.md) -- Pertains to anything I _directly_ did
- - [Notes](Notes.md) -- Pertains to my understanding and development of the project
+ - [README](README.md)      -- Pertains to anything I _directly_ did
+ - [Notes](Notes.md)        -- Pertains to my understanding and development of the project
+ - [Behavior](behavior.py)  -- Prototype of Project in Python
 
 
 ---------
@@ -99,7 +100,6 @@
  .          | .                 | .
  Trees      | ForwardJump       | ---
  .          | Tree              | ---
-
 
 
 ---------
@@ -191,6 +191,9 @@
 ## Design
  - Didn't have time to write an XML/YAML parser
  - This is the logic:
+
+
+### Current
 ```yaml
 # Forward Jump
 root:
@@ -202,12 +205,30 @@ root:
                     enemyInRange?
                     attackJump!
                 wait!
-    chooseRandomly:
-        jump!
-        runRight!
+        chooseRandomly:
+            jump!
+            runRight!
 ```
  - If enemies capable of attacking, wait and step on them
  - otherwise, run right and jump (get lucky)
+
+
+### Alternative
+ - Treat Conditions as Containers, too
+ - Decorators!
+```yaml
+# Forward Jump
+root:
+    either:
+        enemiesClose?
+            either:
+                enemyInRange?
+                    attackJump!
+                wait!
+        randomlyEither:
+            jump!
+            runRight!
+```
 
 
 ---------
