@@ -80,26 +80,27 @@
 ## Progress
 
 
-### Chapter 1: Getting this POS to Work
+### Chapter 1: Getting this to Work
  - Got all these damn notes done
  - Did a crud-ton of reading
  - Now to get the damn thing to run
- - Nothing F***** works
+ - Nothing works
  - IntelliJ just deleted EVERYTHING I did
  - Using a different editor now
- - [How to Set Up Java Development in Visual Studio Code on Windows | vsCode Java Development Basics](https://www.youtube.com/watch?v=ClU9N4ub_Ko)
-     - 
  - [Running and Debugging Java](https://code.visualstudio.com/docs/java/java-debugging)
-     - 
  - Which JDK to Install?
      - `1.8` - compatibility
      - `11` - another class
      - `13` - latest edition
  - Installing all Java Related files into: `C:\Program Files\Java`
  - Something about the `.jar` files is wrong
- - Potential Files to Run:
-     - `src/ch/idsia/scenarios/Main.java`
-     - `src/ch/idsia/scenarios/Play.java`
+ - Run this File: `src/ch/idsia/scenarios/Custom.java`
+ - Oh great. I'm getting exactly _612_ errors. _WHY_.
+     - Apparently `jdom` is needed: http://jdom.org/
+     - And `testng` and a billion other things.
+     - What is this `org` namespace?!?!?
+     - Nevermind, I'm gonna regex and delete any references of it
+     - No time for this nonsense
 
 
 ### Chapter 2: Hiring a Stupid Agent
