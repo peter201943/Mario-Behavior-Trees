@@ -1,2 +1,0 @@
-compileJava.options.fork = true
-compileJava.options.forkOptions.executable = /path_to_javac

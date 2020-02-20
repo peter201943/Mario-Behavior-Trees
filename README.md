@@ -134,6 +134,11 @@
      - Wow.
      - It. Just. Works...
      - I hate everything, and most of all, Java.
+ - Spent some more time debugging. Guess what?
+     - I could have selected `proceed over errors` at ***ANY TIME***
+     - f
+     - I hate this
+     - I hate ALL of this...
 
 
 ### Chapter 2: Hiring an Agent
