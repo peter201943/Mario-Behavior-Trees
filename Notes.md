@@ -1146,24 +1146,16 @@ parallel:
  - Use Java 1.8
  - Try ForwardAgent.java
  - Delete ANY `testing` references
-
-
----------
-
-
-## Compatibility Issues
+ - Advice:
+     - The way I do it is in the runtime parameters.  
+     - `-ag ch.idsia.agents.controllers.BehaviorTreeAgent`  
+     - my file is called `BehaviorTreeAgent.java`  
 
 
 ### Code Annotations
  - Wow, this stuff is pretty bad
  - No comments, anywhere
  - And so much of the code is commented-out
-
-
-### Helpful Advice
-The way I do it is in the runtime parameters.  
-`-ag ch.idsia.agents.controllers.BehaviorTreeAgent`  
-my file is called `BehaviorTreeAgent.java`  
 
 
 ### Correct File?
