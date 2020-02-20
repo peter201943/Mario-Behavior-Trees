@@ -1189,6 +1189,27 @@ parallel:
  - Eclipse will tell you which ones, so it is really quick and easy
 
 
+### Keyboard Commands
+ - Movement
+     - `<-`:    left
+     - `->`:    right
+     - `^`:     fly up
+     - `v`:     fly down
+     - `a`:     run
+     - `s`:     jump
+     - `f`:     fly
+ - Screen
+     - `z`:     bigger
+     - `c`:     center
+     - `r`:     record
+ - Debug
+     - `g`:     grid
+     - `l`:     positions
+     - `v`:     new seed
+     - `w`:     quit
+    
+
+
 ---------
 
 

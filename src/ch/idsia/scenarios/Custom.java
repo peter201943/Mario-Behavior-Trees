@@ -47,7 +47,8 @@ public class Custom
 {
 public static void main(String[] args)
 {
-//final String argsString = "-vis on";
+    //final String argsString = "-vis on";
+    System.out.println("CUSTOM: RUNNING");
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
     final Agent agent = new ForwardAgent();
     final BasicTask basicTask = new BasicTask(marioAIOptions);

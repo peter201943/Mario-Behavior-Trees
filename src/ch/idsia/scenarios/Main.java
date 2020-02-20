@@ -30,6 +30,9 @@ package ch.idsia.scenarios;
 import ch.idsia.benchmark.tasks.BasicTask;
 import ch.idsia.tools.MarioAIOptions;
 
+import ch.idsia.agents.Agent;
+import ch.idsia.agents.controllers.ForwardAgent;
+
 /**
  * Created by IntelliJ IDEA. User: Sergey Karakovskiy, sergey at idsia dot ch Date: Mar 17, 2010 Time: 8:28:00 AM
  * Package: ch.idsia.scenarios
@@ -38,6 +41,12 @@ public final class Main
 {
 public static void main(String[] args)
 {
+    System.out.println("MAIN: RUNNING");
+    final Agent agent = new ForwardAgent();
+
+
+
+
 //        final String argsString = "-vis on";
     final MarioAIOptions marioAIOptions = new MarioAIOptions(args);
 //        final Environment environment = new MarioEnvironment();
