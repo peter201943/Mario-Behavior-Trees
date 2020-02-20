@@ -4,25 +4,59 @@
 # (In Python because Java hurts my head)
 
 
+class StatusCode():
+    """Enumerate the Task Messages"""
+    
+    def __init__(self):
+        """Set the Values"""
+        self.win = 0
+        self.fail = 1
+        self.running = 2
+
+    def Fail(self, other):
+        """Task has Failed Check"""
+        return other == self.fail
+
+    def Running(self, other):
+        """Task still Working Check"""
+        return other == self.running
+
+    def Win(self, other):
+        """Task has Won Check"""
+        return other == self.win
+
+    def Verbose(self, status):
+        """Pretty Print Task Messages"""
+        if self.Fail(status):
+            return "fail"
+        elif self.Win(status):
+            return "win"
+        elif self.Running(status):
+            return "running"
+        else:
+            return "unknown"
+
+
 class Task():
     """Performs a Computation every Cycle"""
 
     def __init__(self, name="noNameTask"):
         """Calls Reset"""
         self.name = name
+        self.statuscode = StatusCode()
         self.Reset()
 
     def Run(self):
         """The Computation"""
         print("4: Task")
-        self.status = "running"
+        self.status = self.statuscode.running
         self.clock += 1
         self.log += "Run " + str(self.clock) + ", " + self.__str__() + "\n"
         return self.status
 
     def __str__(self):
         """Gather Debug Info together"""
-        return self.name + ": "  + "None " + " status: " + self.status
+        return self.name + ": "  + "None " + " status: " + self.statuscode.Verbose(self.status)
         
     def Log(self):
         """Debug the Progress of the Task"""
@@ -30,7 +64,7 @@ class Task():
 
     def Reset(self):
         """Resets the Task"""
-        self.status = "running"
+        self.status = self.statuscode.running
         self.clock = 0
         self.log = self.name + "\n"
 
@@ -44,6 +78,7 @@ class Find(Task):
     def __init__(self, newTargets, newTarget, name="noNameFind"):
         """Calls Reset"""
         self.name = name
+        self.statuscode = StatusCode()
         self.Reset(newTargets, newTarget)
 
     def Run(self):
@@ -54,11 +89,11 @@ class Find(Task):
             if (self.targets[0] == self.target):
                 self.found.append(self.targets[0])
             self.targets.pop(0)
-            self.status = "running"
+            self.status = self.statuscode.running
         elif (len(self.found) > 0):
-            self.status = "success"
+            self.status = self.statuscode.win
         else:
-            self.status = "failed"
+            self.status = self.statuscode.fail
         self.log += "Run " + str(self.clock) + ", " + self.__str__() + "\n"
         return self.status
 
@@ -72,7 +107,7 @@ class Find(Task):
 
     def __str__(self):
         """Gather Debug Info together"""
-        return self.name + ": " + str(self.target) + " in " + str(self.Targets()) + " has found " + str(self.Found()) + " status: " + self.status
+        return self.name + ": " + str(self.target) + " in " + str(self.Targets()) + " has found " + str(self.Found()) + " status: " + self.statuscode.Verbose(self.status)
 
     def Log(self):
         """Debug the Progress of the Task"""
@@ -83,7 +118,7 @@ class Find(Task):
         self.found = []
         self.targets = newTargets
         self.target = newTarget
-        self.status = "running"
+        self.status = self.statuscode.running
         self.clock = 0
         self.log = self.name + "\n"
 
@@ -97,6 +132,7 @@ class Container(Task):
     def __init__(self, name="noNameContainer"):
         """Calls Reset"""
         self.name = name
+        self.statuscode = StatusCode()
         self.Reset()
 
     def Run(self):
@@ -108,7 +144,7 @@ class Container(Task):
 
     def __str__(self):
         """Gather Debug Info together"""
-        return self.name + ": " +  " children: " + str(self.childnames) +  " status: " + self.status
+        return self.name + ": " +  " children: " + str(self.childnames) +  " status: " + self.statuscode.Verbose(self.status)
 
     def Log(self):
         """Debug the Progress of the Task"""
@@ -119,7 +155,7 @@ class Container(Task):
 
     def Reset(self):
         """Resets the Task"""
-        self.status = "running"
+        self.status = self.statuscode.running
         self.clock = 0
         self.children = []
         self.childnames = []
@@ -148,21 +184,22 @@ class Action(Task):
     def __init__(self, name="noNameAction"):
         """Calls Reset"""
         self.name = name
+        self.statuscode = StatusCode()
         self.Reset()
 
     def Run(self):
         """The Computation"""
         print("4: Action")
-        self.status = "running"
+        self.status = self.statuscode.running
         self.clock += 1
         print("This is an Action!")
-        self.status = "success"
+        self.status = self.statuscode.running
         self.log += "Run " + str(self.clock) + ", " + self.__str__() + "\n"
         return self.status
 
     def __str__(self):
         """Gather Debug Info together"""
-        return self.name + ": "  + "None " + " status: " + self.status
+        return self.name + ": "  + "None " + " status: " + self.statuscode.Verbose(self.status)
 
     def Log(self):
         """Debug the Progress of the Task"""
@@ -170,7 +207,7 @@ class Action(Task):
 
     def Reset(self):
         """Resets the Task"""
-        self.status = "running"
+        self.status = self.statuscode.running
         self.clock = 0
         self.log = self.name + "\n"
 
@@ -184,6 +221,7 @@ class Parallel(Container):
     def __init__(self, name="noNameParallel"):
         """Calls Reset"""
         self.name = name
+        self.statuscode = StatusCode()
         self.Reset()
 
     def Run(self):
@@ -197,7 +235,7 @@ class Parallel(Container):
 
     def __str__(self):
         """Gather Debug Info together"""
-        return self.name + ": " +  " children: " + str(self.childnames) +  " status: " + self.status
+        return self.name + ": " +  " children: " + str(self.childnames) +  " status: " + self.statuscode.Verbose(self.status)
 
     def Log(self):
         """Debug the Progress of the Task"""
@@ -208,7 +246,7 @@ class Parallel(Container):
 
     def Reset(self):
         """Resets the Task"""
-        self.status = "running"
+        self.status = self.statuscode.running
         self.clock = 0
         self.children = []
         self.childnames = []
@@ -281,10 +319,11 @@ def Setup():
     myParallel.Add(Find([1,2,3],1, "aFind"))
     myParallel.Add(Find([1,2,3],0, "anotherFind"))
     tasks.append(myParallel)
-    
+
     # 6: Empty Action
     myAction = Action("6: Empty Action")
     tasks.append(myAction)
+
     return tasks
 
 
