@@ -50,8 +50,8 @@
                     ├── BasicTasks
                     │   ├── Task.java               // Abstract             -- Run() returns Action([bool])
                     │   ├── Composite.java          // Task                 -- [Children]
-                    │   ├── Do.java                 // Composite            -- Run() visits each child by waiting
-                    │   ├── Choose.java             // Composite            -- Run() evals each child and picks the one with true condition
+                    │   ├── Do.java                 // Composite            -- Run() visits each child until one returns FAIL
+                    │   ├── Choose.java             // Composite            -- Run() visits each child until one returns PASS
                     │   ├── ChooseRandomly.java     // Choose               -- Do one child randomly
                     │   ├── Action.java             // Task                 -- Do a thing to the external environment
                     │   └── Condition.java          // Task                 -- Get a thing from the external environment
