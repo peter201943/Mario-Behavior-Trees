@@ -6,9 +6,9 @@
 
 class Task():
     """Performs a Computation every Cycle"""
-    def __init__(self):
+    def __init__(self, name="noNameTask"):
         """Calls Reset"""
-        self.Reset()
+        self.Reset(name)
     def Run(self):
         """The Computation"""
         print("4: Task")
@@ -22,11 +22,11 @@ class Task():
     def Log(self):
         """Debug the Progress of the Task"""
         return self.log
-    def Reset(self):
+    def Reset(self, name="noNameTask"):
         """Resets the Task"""
         self.status = "running"
         self.clock = 0
-        self.name = "Task"
+        self.name = name
         self.log = self.name + "\n"
     def Name(self):
         return self.name
@@ -34,16 +34,16 @@ class Task():
 
 class Find(Task):
     """Finds Things every Cycle"""
-    def __init__(self, newTargets, newTarget):
+    def __init__(self, newTargets, newTarget, name="noNameFind"):
         """Calls Reset"""
-        self.Reset(newTargets, newTarget)
+        self.Reset(newTargets, newTarget, name)
     def Run(self):
         """The Computation"""
         print("4: FindTask")
         self.clock += 1
         if (len(self.targets) > 0):
             if (self.targets[0] == self.target):
-                self.found += self.targets[0]
+                self.found.append(self.targets[0])
             self.targets.pop(0)
             self.status = "running"
         elif (len(self.found) > 0):
@@ -60,18 +60,18 @@ class Find(Task):
         return str(self.targets)
     def __str__(self):
         """Gather Debug Info together"""
-        return self.name + ": " + self.target + " in " + self.Targets() + " has found " + self.Found() + " status: " + self.status
+        return self.name + ": " + str(self.target) + " in " + str(self.Targets()) + " has found " + str(self.Found()) + " status: " + self.status
     def Log(self):
         """Debug the Progress of the Task"""
         return self.log
-    def Reset(self, newTargets, newTarget):
+    def Reset(self, newTargets, newTarget, name="noNameFind"):
         """Resets the Task"""
         self.found = []
         self.targets = newTargets
         self.target = newTarget
         self.status = "running"
         self.clock = 0
-        self.name = "Find"
+        self.name = name
         self.log = self.name + "\n"
     def Name(self):
         return self.name
@@ -79,9 +79,9 @@ class Find(Task):
 
 class Container(Task):
     """Finds Children every Cycle"""
-    def __init__(self):
+    def __init__(self, name="noNameContainer"):
         """Calls Reset"""
-        self.Reset()
+        self.Reset(name)
     def Run(self):
         """The Computation"""
         print("4: ContainerTask")
@@ -93,13 +93,60 @@ class Container(Task):
         return self.name + ": " +  " children: " + str(self.childnames) +  " status: " + self.status
     def Log(self):
         """Debug the Progress of the Task"""
-        return self.log
-    def Reset(self):
+        recursiveLog = ""
+        for child in self.children:
+            recursiveLog += child.Log() + "\n\n"
+        return self.log + "\n\n" + recursiveLog
+    def Reset(self, name="noNameContainer"):
         """Resets the Task"""
         self.status = "running"
         self.clock = 0
         self.children = []
-        self.name = "Container"
+        self.name = name
+        self.childnames = []
+        self.log = self.name + "\n"
+    def Children(self):
+        """Access the Child Tasks"""
+        return self.children
+    def Add(self, task):
+        self.children.append(task)
+        self.childnames.append(task.Name())
+    def Remove(self, task):
+        if task in self.children:
+            self.children.remove(task)
+            self.childnames.remove(task.Name())
+    def Name(self):
+        return self.name
+
+
+class Parallel(Container):
+    """Finds Children every Cycle"""
+    def __init__(self, name="noNameParallel"):
+        """Calls Reset"""
+        self.Reset(name)
+    def Run(self):
+        """The Computation"""
+        print("4: ParallelTask")
+        self.clock += 1
+        for child in self.children:
+            child.Run()
+        self.log += "Run " + str(self.clock) + ", " + self.__str__() + "\n"
+        return self.status
+    def __str__(self):
+        """Gather Debug Info together"""
+        return self.name + ": " +  " children: " + str(self.childnames) +  " status: " + self.status
+    def Log(self):
+        """Debug the Progress of the Task"""
+        recursiveLog = ""
+        for child in self.children:
+            recursiveLog += child.Log() + "\n\n"
+        return self.log + "\n\n" + recursiveLog
+    def Reset(self, name="noNameParallel"):
+        """Resets the Task"""
+        self.status = "running"
+        self.clock = 0
+        self.children = []
+        self.name = name
         self.childnames = []
         self.log = self.name + "\n"
     def Children(self):
@@ -124,26 +171,40 @@ def Game(tasks, clock):
     if (clock < 10):
         Game(tasks, (clock + 1))
     else:
-        print()
+        print("\n5: Results:")
         for task in tasks:
-            print(task.Log())
+            print("6: " + task.Log())
 
 
 def Setup():
     """Sets the Game Up"""
     print("2: setup")
-    tree = []
-    myTask = Task()
-    tree.append(myTask)
-    myFind = Find(['a','b','a','a','b','b','b','b','a'], 'a')
-    tree.append(myFind)
-    myFind2 = Find(['b','b','b','b','b'], 'a')
-    tree.append(myFind2)
-    myContainer = Container()
+    tasks = []
+    # 0: Empty Task
+    myTask = Task("0: Empty Task")
+    tasks.append(myTask)
+    # 1: Successful Condition Task
+    myFind = Find(['a','b','a','a','b','b','b','b','a'], 'a', "1: Successful Condition Task")
+    tasks.append(myFind)
+    # 2: Failure Condition Task
+    myFind2 = Find(['b','b','b','b','b'], 'a', "2: Failure Condition Task")
+    tasks.append(myFind2)
+    # 3: Container of Pointers
+    myContainer = Container("3: Container of Pointers")
     myContainer.Add(myFind)
     myContainer.Add(myFind2)
-    tree.append(myContainer)
-    return tree
+    tasks.append(myContainer)
+    # 4: Container of Uniques
+    myContainer2 = Container("4: Container of Uniques")
+    myContainer2.Add(Find([1,2,3],1))
+    myContainer2.Add(Find([1,2,3],0))
+    tasks.append(myContainer2)
+    # 5: Parallel of Uniques
+    myParallel = Parallel("5: Parallel of Uniques")
+    myParallel.Add(Find([1,2,3],1, "aFind"))
+    myParallel.Add(Find([1,2,3],0, "anotherFind"))
+    tasks.append(myParallel)
+    return tasks
 
 
 def main():
