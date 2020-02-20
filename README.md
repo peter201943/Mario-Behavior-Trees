@@ -80,11 +80,32 @@
 ## Progress
 
 
-### ???
+### Chapter 1: Getting this POS to Work
  - Got all these damn notes done
  - Did a crud-ton of reading
  - Now to get the damn thing to run
+ - Nothing F***** works
+ - IntelliJ just deleted EVERYTHING I did
+ - Using a different editor now
+ - [How to Set Up Java Development in Visual Studio Code on Windows | vsCode Java Development Basics](https://www.youtube.com/watch?v=ClU9N4ub_Ko)
+     - 
+ - [Running and Debugging Java](https://code.visualstudio.com/docs/java/java-debugging)
+     - 
+ - Something about the `.jar` files is wrong
+ - Potential Files to Run:
+     - `src/ch/idsia/scenarios/Main.java`
+     - `src/ch/idsia/scenarios/Play.java`
 
+
+### Chapter 2: Hiring a Stupid Agent
+ - Potential Agents to Hire:
+     - `C:\Users\Standard Access\Peter\School\College\3 - Junior\CS 387\Projects\HW 3\src\competition\gic2010\turing\sergeykarakovskiy\SergeyKarakovskiy_ForwardAgent.java`
+     - `C:\Users\Standard Access\Peter\School\College\3 - Junior\CS 387\Projects\HW 3\src\competition\gic2010\gameplay\sergeykarakovskiy\SergeyKarakovskiy_ForwardAgent.java`
+     - `C:\Users\Standard Access\Peter\School\College\3 - Junior\CS 387\Projects\HW 3\src\ch\idsia\agents\controllers\ForwardAgent.java`
+
+
+### Chapter 3: Adding our First Task
+ - 
 
 
 ---------
