@@ -131,13 +131,21 @@
          - No results (too many files)
  - Plan B? D? Z? (How many of these stupid attempts at compatibility have borne no fruit?)
  - Download and attempt it in Eclipse
+     - Wow.
+     - It. Just. Works...
+     - I hate everything, and most of all, Java.
 
 
-### Chapter 2: Hiring a Stupid Agent
+### Chapter 2: Hiring an Agent
  - Potential Agents to Hire:
      - `C:\Users\Standard Access\Peter\School\College\3 - Junior\CS 387\Projects\HW 3\src\competition\gic2010\turing\sergeykarakovskiy\SergeyKarakovskiy_ForwardAgent.java`
      - `C:\Users\Standard Access\Peter\School\College\3 - Junior\CS 387\Projects\HW 3\src\competition\gic2010\gameplay\sergeykarakovskiy\SergeyKarakovskiy_ForwardAgent.java`
      - `C:\Users\Standard Access\Peter\School\College\3 - Junior\CS 387\Projects\HW 3\src\ch\idsia\agents\controllers\ForwardAgent.java`
+ - Plan:
+     - Study `ForwardAgent.java`
+     - Redesign `ForwardAgent` in terms of Behavior Trees
+     - Implement only the required Behavior Trees
+     - Test this new framework/agent
 
 
 ### Chapter 3: Adding our First Task
