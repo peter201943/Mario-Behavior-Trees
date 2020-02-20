@@ -24,6 +24,7 @@
      - [Links](#links)
      - [Structural Additions](#structural-additions)
      - [Progress](#progress)
+     - [Design](#design)
 
 
 ## Links
@@ -34,44 +35,71 @@
 ---------
 
 
-## Structural Additions
-```bash
+## Additions
+
+
+### Structure
+```
 .
 └── src
-    └── peter
-        ├── AbstractTasks
-        │   ├── Task.java               // Abstract -- Has Parent, Children, Effect, Status
-        │   ├── Composite.java          // Abstract -- Has 
-        │   ├── Sequence.java           // Abstract -- Do These Things in Order
-        │   ├── Selector.java           // Abstract -- Pick One of These
-        │   ├── RandomSelector.java     // Randomly Select
-        │   ├── RandomSequence.java     // Randomly Order
-        │   ├── Loop.java               // Calls itself and its children
-        │   ├── Action.java             // Do a thing to the external environment
-        │   └── Condition.java          // Get a thing from the external environment
-        ├── MarioTasks
-        │   ├── MoveFlat.java           // Move to a Point on Ground
-        │   ├── MoveDown.java           // Move to a Point Below
-        │   ├── MoveUp.java             // Move to a Point Above
-        │   ├── EnemyInRange.java       // Can we step/jump on an enemy?
-        │   ├── Survive.java            // Choose which sub behavior to pursue
-        │   ├── Win.java                // Move right
-        │   ├── Score.java              // Get Coins
-        │   └── AttackJump.java         // Jump on Enemy
-        ├── Trees
-        │   ├── Tree.java               // Abstract - Has Root, Meta
-        │   ├── Killing.java            // Emphasizes killing as many enemies as possible
-        │   ├── Agility.java            // Emphasizes doing every jump correctly
-        │   ├── Coins.java              // Emphasizes collecting as many coins as possible
-        │   └── Combo.java              // Combines all of the Trees into a Mega Tree 
-        ├── Agents
-        │   ├── BTAgent.java            // Interface -- Has Tree, Update, Query
-        │   └── MarioBTAgent.java       // Abstract -- Uses Regular Mario Agent and BT Functionality
-        └── Tests
-            ├── TestTask.java           // 
-            ├── TestTree.java           // 
-            └── TestAgent.java          // 
+    └── ch
+        └── idsia
+            └── competition
+                └── peter
+                    ├── BasicTasks
+                    │   ├── Task.java               // Abstract             -- Run() returns Action([bool])
+                    │   ├── Composite.java          // Task                 -- [Children]
+                    │   ├── Do.java                 // Composite            -- Run() visits each child by waiting
+                    │   ├── Choose.java             // Composite            -- Run() evals each child and picks the one with true condition
+                    │   ├── ChooseRandomly.java     // Choose               -- Do one child randomly
+                    │   ├── Action.java             // Task                 -- Do a thing to the external environment
+                    │   └── Condition.java          // Task                 -- Get a thing from the external environment
+                    ├── MarioTasks
+                    │   ├── RunRight.java           // Action               -- Returns Right and Run
+                    │   ├── Jump.java               // Action               -- Returns Jump
+                    │   ├── AttackJump.java         // Action               -- Returns Jump/Right commands to kill an enemy
+                    │   ├── Wait.java               // Action               -- Returns [bool] of no action
+                    │   ├── EnemyInRange.java       // Condition            -- Can we step/jump on an enemy?
+                    │   └── EnemiesClose.java       // Condition            -- Do we need to worry?
+                    ├── Trees
+                    │   ├── Tree.java               // Abstract             -- Builds a Tree from Tasks, Points to the Root, has Run()
+                    │   └── ForwardJump.java        // Tree                 -- Run Right and Jump
+                    ├── Agents
+                    │   ├── BTAgent.java            // Interface            -- Tree, Run() -> [bool]]
+                    │   └── MarioBTAgent.java       // BasicMarioAIAgent    -- Uses Regular Mario Agent and BT Functionality
+                    └── Helpers
+                        ├── Print.java              // Interface            -- Print(depth, name, status)
+                        └── Status.java             // Class                -- Running, Pass, Fail (Just data)
 ```
+
+
+### Status
+ folder     | name              | progress
+------------|-------------------|----------
+ Agents     | BTAgent           | ---
+ .          | MarioBTAgent      | ---
+ .          | .                 | .
+ BasicTasks | Action            | ---
+ .          | Choose            | ---
+ .          | ChooseRandomly    | ---
+ .          | Composite         | ---
+ .          | Condition         | ---
+ .          | Do                | ---
+ .          | Task              | ---
+ .          | .                 | .
+ Helpers    | Print             | ---
+ .          | Status            | ---
+ .          | .                 | .
+ MarioTasks | AttackJump        | ---
+ .          | EnemiesClose      | ---
+ .          | EnemyInRange      | ---
+ .          | Jump              | ---
+ .          | RunRight          | ---
+ .          | Wait              | ---
+ .          | .                 | .
+ Trees      | ForwardJump       | ---
+ .          | Tree              | ---
+
 
 
 ---------
@@ -136,7 +164,6 @@
      - I hate everything, and most of all, Java.
  - Spent some more time debugging. Guess what?
      - I could have selected `proceed over errors` at ***ANY TIME***
-     - f
      - I hate this
      - I hate ALL of this...
 
@@ -160,4 +187,28 @@
 
 ---------
 
+
+## Design
+ - Didn't have time to write an XML/YAML parser
+ - This is the logic:
+```yaml
+# Forward Jump
+root:
+    choose:
+        do:
+            enemiesClose?
+            choose:
+                do:
+                    enemyInRange?
+                    attackJump!
+                wait!
+    chooseRandomly:
+        jump!
+        runRight!
+```
+ - If enemies capable of attacking, wait and step on them
+ - otherwise, run right and jump (get lucky)
+
+
+---------
 
