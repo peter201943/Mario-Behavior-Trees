@@ -91,6 +91,11 @@
      - 
  - [Running and Debugging Java](https://code.visualstudio.com/docs/java/java-debugging)
      - 
+ - Which JDK to Install?
+     - `1.8` - compatibility
+     - `11` - another class
+     - `13` - latest edition
+ - Installing all Java Related files into: `C:\Program Files\Java`
  - Something about the `.jar` files is wrong
  - Potential Files to Run:
      - `src/ch/idsia/scenarios/Main.java`

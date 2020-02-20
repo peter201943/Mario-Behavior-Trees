@@ -1151,13 +1151,96 @@ parallel:
 ---------
 
 
-## Code Annotations
+## Compatibility Issues
+
+
+### Code Annotations
  - Wow, this stuff is pretty bad
  - No comments, anywhere
- - And so much o the code is commented-out
+ - And so much of the code is commented-out
 
 
+### Helpful Advice
+The way I do it is in the runtime parameters.  
+`-ag ch.idsia.agents.controllers.BehaviorTreeAgent`  
+my file is called `BehaviorTreeAgent.java`  
 
+
+### Correct File?
+ - `Custom.Java`
+
+
+---------
+
+
+## Trees
+
+
+### Notation Styles
+```yaml
+
+# === Keywords ===
+# text                          # Human Comment
+let "peter.tasks.loop" = loop   # Import
+blah                            # Task
+root:                           # Entry Point
+
+# === Syntax ===
+blah:                           # Composite Task
+blah!                           # Active Task
+blah?                           # C
+
+# ===
+
+```
+
+
+### Basic Guard AI (Full)
+```yaml
+root:
+    select:
+        select:
+            enemies?
+            select:
+                iSeeEnemies?
+                attack!
+            guard!
+        returnToPost!
+```
+
+
+### Basic Guard AI (Condensed)
+```yaml
+root:
+    enemies?
+        iSeeEnemies?
+            attack!
+        guard!
+    returnToPost!
+```
+
+
+### Basic Agent Tree
+```yaml
+# Basic Agent Tree
+root:
+    select:
+        strat1 # coins
+        strat2 # kills
+        strat3 # time
+
+# Collecting Coins
+strat1:
+    empty
+
+# Collecting Kill
+strat2:
+    empty
+
+# Saving Time
+strat3:
+    empty
+```
 
 ---------
 
