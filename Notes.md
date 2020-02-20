@@ -1130,6 +1130,7 @@ parallel:
  - https://www.gameaipro.com/GameAIPro/GameAIPro_Chapter06_The_Behavior_Tree_Starter_Kit.pdf
  - http://www.what-could-possibly-go-wrong.com/fluent-behavior-trees-for-ai-and-game-logic/
  - https://www.youtube.com/watch?v=bT7WRAeQo3c
+ - https://sites.google.com/a/marioai.com/www/marioai-benchmark/overview
 
 
 ### Class Notes

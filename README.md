@@ -106,6 +106,22 @@
  - https://github.com/leonardost/kifu-recorder-tests/commit/c09792b08e9a0e44ad1d4f0ccad8d55d8af0084a
  - And now I also need a _proper_ build system in order to load the `.jar`'s properly. _uuuggghhhhhh_
      - https://maven.apache.org/download.cgi
+ - FINALLY!
+ - Ughhh. Great, down from `618` bugs to _only_ `371`.
+ - Seems related to `testng`. Was NOT included as a library.
+ - Strat 1: Delete _ALL_ references to `testng`.
+ - Offending Files:
+     - `CmdLineOptionsTest.java`
+     - `LevelGeneratorTest.java`
+     - `LevelSceneTest.java`
+     - `MarioAIBenchmarkTest.java`
+     - `MarioEnvironmentTest.java`
+ - Commenting failed. There are more conflicts than just `testng`
+ - Add `gradle` to properly specify dependencies
+ - Gradle installed, maven not working
+ - https://stackoverflow.com/questions/18487406/how-do-i-tell-gradle-to-use-specific-jdk-version#21212790
+ - Now to set the freaking compatibility for this thing
+
 
 
 ### Chapter 2: Hiring a Stupid Agent
