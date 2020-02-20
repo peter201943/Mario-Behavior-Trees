@@ -1173,6 +1173,21 @@ parallel:
  - https://github.com/redhat-developer/vscode-java/issues/346
 
 
+### Zoom Level
+ - So, apparently your own fireball are enemies
+ - You need to set the zoom level to see anything appropriately
+ - z_level = 1 sees >= 80
+ - enemy = 2, fireball = 25
+
+
+### Generate More Levels
+ - I got a different level
+ - Just uncomment almost all the code in main
+ - Then change the seed value
+ - You also have to make the one method public and you also have to import a couple more modules
+ - Eclipse will tell you which ones, so it is really quick and easy
+
+
 ---------
 
 

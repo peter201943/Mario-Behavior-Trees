@@ -33,9 +33,9 @@ import ch.idsia.utils.ParameterContainer;
 import junit.framework.TestCase;
 
 // pjm349: ATTN, These are BROKEN!!!
-// import org.testng.annotations.AfterTest;
-// import org.testng.annotations.BeforeTest;
-// import org.testng.annotations.Test;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 /**
  * Created by IntelliJ IDEA.

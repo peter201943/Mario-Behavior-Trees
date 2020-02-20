@@ -121,7 +121,16 @@
  - Gradle installed, maven not working
  - https://stackoverflow.com/questions/18487406/how-do-i-tell-gradle-to-use-specific-jdk-version#21212790
  - Now to set the freaking compatibility for this thing
-
+ - https://stackoverflow.com/questions/11364761/how-do-i-compile-a-java-with-support-for-older-versions-of-java
+ - I have no idea how to do any of this
+ - How about we just DELETE these classes:
+     - AccessTest.java
+     - Util.java
+ - No, can't. Can't even tell how many files may or may not use these.
+     - attempting to `grep` for usages of `AccessTest`, this will take a long time (584 files)
+         - No results (too many files)
+ - Plan B? D? Z? (How many of these stupid attempts at compatibility have borne no fruit?)
+ - Download and attempt it in Eclipse
 
 
 ### Chapter 2: Hiring a Stupid Agent
@@ -132,42 +141,10 @@
 
 
 ### Chapter 3: Adding our First Task
- - 
+ - I'm gonna cry, I haven't even touched this yet.
+ - The game just WONT COMPILE
 
 
 ---------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

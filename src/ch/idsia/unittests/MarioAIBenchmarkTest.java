@@ -36,8 +36,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 // pjm349: ATTN, These are BROKEN!!!
-// import org.testng.annotations.AfterTest;
-// import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import java.util.Random;
 
