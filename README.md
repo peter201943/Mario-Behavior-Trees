@@ -101,6 +101,11 @@
      - What is this `org` namespace?!?!?
      - Nevermind, I'm gonna regex and delete any references of it
      - No time for this nonsense
+ - https://github.com/redhat-developer/vscode-java/issues/346
+ - https://stackoverflow.com/questions/50232557/visual-studio-code-java-extension-howto-add-jar-to-classpath
+ - https://github.com/leonardost/kifu-recorder-tests/commit/c09792b08e9a0e44ad1d4f0ccad8d55d8af0084a
+ - And now I also need a _proper_ build system in order to load the `.jar`'s properly. _uuuggghhhhhh_
+     - https://maven.apache.org/download.cgi
 
 
 ### Chapter 2: Hiring a Stupid Agent

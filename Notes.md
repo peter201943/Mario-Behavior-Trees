@@ -1167,6 +1167,9 @@ parallel:
  - https://testng.org/doc/
  - https://junit.org/junit5/
  - http://jdom.org/downloads/
+ - Apparently these are tied up in the `.jar` files
+ - These only import properly inside of _eclipse_.
+ - https://github.com/redhat-developer/vscode-java/issues/346
 
 
 ---------
