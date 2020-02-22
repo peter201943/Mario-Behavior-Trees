@@ -166,6 +166,23 @@
      - I could have selected `proceed over errors` at ***ANY TIME***
      - I hate this
      - I hate ALL of this...
+ - Getting the Agent to Launch
+     - https://code.visualstudio.com/docs/cpp/launch-json-reference
+     - Need to set the arguments to `-ag` when launching
+ - Nothing works
+     - Nothing. Nothing at all.
+     - I hate everything. Did I mention that?
+     - I'm going to find another Java Mario Project, one that works.
+ - Alternative Mario Projects:
+     - [Refactored Competition AI](https://github.com/kefik/MarioAI)
+         - Someone took the exact same code and refactored it into readable, clean Java
+         - It still suffers from the same problems, namely, that I cannot load an agent
+     - [Anniversary Edition AI](https://github.com/amidos2006/Mario-AI-Framework)
+         - This looks very different from the other two
+         - But it actually works...
+         - And the code has no errors...
+         - And the agents are super easy to load and launch.
+         - I am going to use this one.
 
 
 ### Chapter 2: Hiring an Agent

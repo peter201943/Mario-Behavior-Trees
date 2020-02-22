@@ -1,0 +1,533 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LevelEditor<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.benchmark.mario.engine.mapedit.LevelEditor",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AmiCoSimulator<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.benchmark.mario.simulation.AmiCoSimulator",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Custom<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Custom",
+            "args": ["-ag"],
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Main",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Play<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Play",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Replay<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Replay",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-GamePlayTrack<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.champ.GamePlayTrack",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LearningTrack<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.champ.LearningTrack",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TuringTestTrack<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.champ.TuringTestTrack",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CompetitionScore<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.CompetitionScore",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Evolve<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.Evolve",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveIncrementally<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.EvolveIncrementally",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveMultiSeed<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.EvolveMultiSeed",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-GeneralScenario<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.GeneralScenario",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MainRun<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.MainRun",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Stats<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.Stats",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveSingle<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.EvolveSingle",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveWithChangingSeeds<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.EvolveWithChangingSeeds",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PaperEvolve<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.PaperEvolve",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PaperEvolveBatch<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.PaperEvolveBatch",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StochasticityTest<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.StochasticityTest",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ToolsConfigurator<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.tools.ToolsConfigurator",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StatisticalSummary<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.statistics.StatisticalSummary",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StatisticalTests<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.statistics.StatisticalTests",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Stats<HW 3_c8d581e7>(1)",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.statistics.Stats",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AccessTest<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.AccessTest",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArrayListTest<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.ArrayListTest",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EasyTest<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.EasyTest",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EncodeBase64<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.EncodeBase64",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ReadTest<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.ReadTest",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ShadowTest<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.ShadowTest",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Util<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.Util",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-WriterTest<HW 3_c8d581e7>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.WriterTest",
+            "projectName": "HW 3_c8d581e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-JDOMAbout<HW 3>",
+            "request": "launch",
+            "mainClass": "JDOMAbout",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LevelEditor<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.benchmark.mario.engine.mapedit.LevelEditor",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AmiCoSimulator<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.benchmark.mario.simulation.AmiCoSimulator",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Custom<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Custom",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Main",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Play<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Play",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Replay<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.Replay",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-GamePlayTrack<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.champ.GamePlayTrack",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LearningTrack<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.champ.LearningTrack",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TuringTestTrack<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.champ.TuringTestTrack",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CompetitionScore<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.CompetitionScore",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Evolve<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.Evolve",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveIncrementally<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.EvolveIncrementally",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveMultiSeed<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.EvolveMultiSeed",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-GeneralScenario<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.GeneralScenario",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MainRun<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.MainRun",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Stats<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.oldscenarios.Stats",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveSingle<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.EvolveSingle",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EvolveWithChangingSeeds<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.EvolveWithChangingSeeds",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PaperEvolve<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.PaperEvolve",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-PaperEvolveBatch<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.PaperEvolveBatch",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StochasticityTest<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.scenarios.test.StochasticityTest",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ToolsConfigurator<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.tools.ToolsConfigurator",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StatisticalSummary<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.statistics.StatisticalSummary",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-StatisticalTests<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.statistics.StatisticalTests",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Stats<HW 3>(1)",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.statistics.Stats",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-AccessTest<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.AccessTest",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArrayListTest<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.ArrayListTest",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EasyTest<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.EasyTest",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-EncodeBase64<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.EncodeBase64",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ReadTest<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.ReadTest",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ShadowTest<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.ShadowTest",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Util<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.Util",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-WriterTest<HW 3>",
+            "request": "launch",
+            "mainClass": "ch.idsia.utils.wox.serial.WriterTest",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Version<HW 3>",
+            "request": "launch",
+            "mainClass": "junit.runner.Version",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TestRunner<HW 3>",
+            "request": "launch",
+            "mainClass": "junit.textui.TestRunner",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-JUnitCore<HW 3>",
+            "request": "launch",
+            "mainClass": "org.junit.runner.JUnitCore",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ASMifierClassVisitor<HW 3>",
+            "request": "launch",
+            "mainClass": "org.objectweb.asm.util.ASMifierClassVisitor",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CheckClassAdapter<HW 3>",
+            "request": "launch",
+            "mainClass": "org.objectweb.asm.util.CheckClassAdapter",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TraceClassVisitor<HW 3>",
+            "request": "launch",
+            "mainClass": "org.objectweb.asm.util.TraceClassVisitor",
+            "projectName": "HW 3"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Processor<HW 3>",
+            "request": "launch",
+            "mainClass": "org.objectweb.asm.xml.Processor",
+            "projectName": "HW 3"
+        }
+    ]
+}
