@@ -1,4 +1,9 @@
 
+# **__ATTENTION: THIS REPO IS NOW DEPRECATED!!!__**
+# **__SEE [Mario-AI-Framework](https://github.com/peter201943/Mario-AI-Framework) FOR NEW PROJECT__**
+
+---------
+
 
 ## CS 387: Game AI
 
